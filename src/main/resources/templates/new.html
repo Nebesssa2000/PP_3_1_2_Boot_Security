@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New user</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/admin/users}" th:object="${user}">
+  <lable for="user_name">User name: </lable>
+  <input type="text" th:field="*{userName}" id="user_name"/>
+  <br/>
+  <div style="color:red" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">User name is wrong</div>
+  <br/>
+  <lable for="user_last_name">User lastname:</lable>
+  <input type="text" th:field="*{userLastName}" id="surname"/>
+  <br/>
+  <div style="color:red" th:if="${#fields.hasErrors('userLastName')}" th:errors="*{userLastName}">User lastname is wrong</div>
+  <br/>
+  <lable for="password">password:</lable>
+  <input type="text" th:field="*{password}" id="password"/>
+  <br/>
+  <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password is not correct</div>
+  <br/>
+  <lable for="roles">roles (1-admin, 2-user):</lable>
+  <input type="text" th:field="*{roles}" id="roles"/>
+  <br/>
+
+  <br/>
+  <input type="submit" value="Create!"/>
+  <br/>
+
+  <br/>
+  <hr/>
+  <a th:href="@{/logout}">LOGOUT</a>
+  <br/>
+
+</form>
+
+</body>
+</html>
